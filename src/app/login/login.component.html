@@ -8,46 +8,95 @@
 		<!-- LOGIN FORM -->
 		<!--===================================================-->
 		<div class="cls-content">
-		    <div class="cls-content-sm panel">
+		    <div class="cls-content-sm panel" *ngIf="!showPass && !showReg">
 		        <div class="panel-body">
 		            <div class="mar-ver pad-btm">
 		                <h1 class="h3">Scholarum Login</h1>
-		                <p>Sign In to your account</p>
+		                <p>Sign in to your account</p>
 		            </div>
-		            <form action="index.html">
+		            <form>
 		                <div class="form-group pad-btm">
 		                    <input type="text" class="form-control" placeholder="Username" autofocus>
 		                </div>
 		                <div class="form-group pad-btm">
 		                    <input type="password" class="form-control" placeholder="Password">
-		                </div>
+						</div>
 		                <div class="checkbox pad-btm text-left">
 		                    <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
 		                    <label for="demo-form-checkbox">Remember me</label>
 		                </div>
-		                <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
+		                <button routerLink="dashboard" class="btn btn-primary btn-lg btn-block">Sign In</button>
 		            </form>
 		        </div>
-		
 		        <div class="pad-all">
-		            <a href="#" class="btn-link mar-rgt">Forgot password ?</a>
-		            <a href="#" class="btn-link mar-lft">Create a new account</a>
+		            <a (click)="showPass = !showPass" class="btn-link mar-rgt">Forgot password ?</a>
+		            <a (click)="showReg = !showReg" class="btn-link mar-lft">Create a new account</a>
 		
 		            <div class="media pad-top bord-top">
 		                <div class="pull-right">
-		                    <a href="#" class="pad-rgt"><i class="psi-facebook icon-lg text-primary"></i></a>
-		                    <a href="#" class="pad-rgt"><i class="psi-twitter icon-lg text-info"></i></a>
-		                    <a href="#" class="pad-rgt"><i class="psi-google-plus icon-lg text-danger"></i></a>
+		                    <a class="pad-rgt"><i class="psi-facebook icon-lg text-primary"></i></a>
+		                    <a class="pad-rgt"><i class="psi-twitter icon-lg text-info"></i></a>
+		                    <a class="pad-rgt"><i class="psi-google-plus icon-lg text-danger"></i></a>
 		                </div>
 		                <div class="media-body text-left text-bold text-main">
 		                    Login with
 		                </div>
 		            </div>
 		        </div>
-		    </div>
+			</div>
+			
+
+			<div class="cls-content-sm panel" *ngIf="showPass">
+				<div class="panel-body" >
+					<h1 class="h3">Forgot password</h1>
+					<p class="pad-btm">Enter your email address to recover your password. </p>
+					<form action="pages-login.html">
+						<div class="form-group">
+							<input type="email" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group text-right">
+							<button class="btn btn-danger btn-lg btn-block" type="submit">Reset Password</button>
+						</div>
+					</form>
+					<div class="pad-top">
+						<a (click)="showPass = !showPass" class="btn-link text-bold text-main">Back to Login</a>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="cls-content-sm panel" *ngIf="showReg">
+				<div class="panel-body">
+					<form>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Full name" name="name">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="E-mail" name="email">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Username" name="username">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" placeholder="Password" name="password">
+								</div>
+							</div>
+						</div>
+						<div class="checkbox pad-btm text-left">
+							<input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
+							<label for="demo-form-checkbox">I agree with the <a href="#" class="btn-link text-bold">Terms and Conditions</a></label>
+						</div>
+						<button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+					</form>
+				</div>
+				<div class="pad-all">
+					Already have an account ? <a class="btn-link mar-rgt text-bold" (click)="showReg = !showReg" >Sign In</a>
+				</div>
+			</div>
+
 		</div>
-		<!--===================================================-->
-		
-		
-		
-    </div>
+	</div>
